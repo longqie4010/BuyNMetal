@@ -144,9 +144,9 @@
         NSLog(@"%@",@"钻石卡");
     }
     if ([_oldLevel isEqualToString:newLevel]) {
-        NSLog(@"%@",@"恭喜你升级");
+        NSLog(@"恭喜您升级为%@客户",newLevel);
+    
     }
-
 
 }
 
