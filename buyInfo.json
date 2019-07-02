@@ -1,0 +1,44 @@
+{
+  "createTime" : "2019-07-02 15:00:00",
+  "discountCards" : [
+    "9折券"
+  ],
+  "items" : [
+    {
+      "amount" : 0,
+      "product" : "001001"
+    },
+    {
+      "amount" : 0,
+      "product" : "001002"
+    },
+    {
+      "amount" : 0,
+      "product" : "002001"
+    },
+    {
+      "amount" : 0,
+      "product" : "002002"
+    },
+    {
+      "amount" : 2,
+      "product" : "002003"
+    },
+    {
+      "amount" : 0,
+      "product" : "003001"
+    },
+    {
+      "amount" : 0,
+      "product" : "003002"
+    }
+  ],
+  "memberId" : "6236609999",
+  "orderId" : "0000001",
+  "payments" : [
+    {
+      "amount" : 9860,
+      "type" : "余额支付"
+    }
+  ]
+}

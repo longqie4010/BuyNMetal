@@ -1,0 +1,95 @@
+{
+  "items" : [
+    {
+      "price" : 998,
+      "product" : "001001",
+      "threeThousandValue" : 0,
+      "threeThousandValueDelate" : 0,
+      "twoThousandValue" : 0,
+      "twoThousandValueDelate" : 0,
+      "oneThousandValue" : 0,
+      "oneThousandValueDelate" : 0,
+      "zhekouValue" : 1,
+      "banjiaValue" : false,
+      "jianyiValue" : false
+    },
+    {
+      "price" : 1380,
+      "product" : "001002",
+      "threeThousandValue" : 0,
+      "threeThousandValueDelate" : 0,
+      "twoThousandValue" : 0,
+      "twoThousandValueDelate" : 0,
+      "oneThousandValue" : 0,
+      "oneThousandValueDelate" : 0,
+      "zhekouValue" : 0.9,
+      "banjiaValue" : false,
+      "jianyiValue" : false
+    },
+    {
+      "price" : 1580,
+      "product" : "003001",
+      "threeThousandValue" : 0,
+      "threeThousandValueDelate" : 0,
+      "twoThousandValue" : 0,
+      "twoThousandValueDelate" : 0,
+      "oneThousandValue" : 0,
+      "oneThousandValueDelate" : 0,
+      "zhekouValue" : 0.95,
+      "banjiaValue" : false,
+      "jianyiValue" : false
+    },
+    {
+      "price" : 980,
+      "product" : "003002",
+      "threeThousandValue" : 0,
+      "threeThousandValueDelate" : 0,
+      "twoThousandValue" : 0,
+      "twoThousandValueDelate" : 0,
+      "oneThousandValue" : 0,
+      "oneThousandValueDelate" : 0,
+      "zhekouValue" : 1,
+      "banjiaValue" : true,
+      "jianyiValue" : true
+    },
+    {
+      "price" : 1080,
+      "product" : "002001",
+      "threeThousandValue" : 0,
+      "threeThousandValueDelate" : 0,
+      "twoThousandValue" : 0,
+      "twoThousandValueDelate" : 0,
+      "oneThousandValue" : 0,
+      "oneThousandValueDelate" : 0,
+      "zhekouValue" : 0.95,
+      "banjiaValue" : true,
+      "jianyiValue" : true
+    },
+    {
+      "price" : 998,
+      "product" : "002002",
+      "threeThousandValue" : 0,
+      "threeThousandValueDelate" : 0,
+      "twoThousandValue" : 2000,
+      "twoThousandValueDelate" : 30,
+      "oneThousandValue" : 1000,
+      "oneThousandValueDelate" : 10,
+      "zhekouValue" : 1,
+      "banjiaValue" : false,
+      "jianyiValue" : false
+    },
+    {
+      "price" : 698,
+      "product" : "002003",
+      "threeThousandValue" : 3000,
+      "threeThousandValueDelate" : 350,
+      "twoThousandValue" : 2000,
+      "twoThousandValueDelate" : 30,
+      "oneThousandValue" : 1000,
+      "oneThousandValueDelate" : 10,
+      "zhekouValue" : 0.9,
+      "banjiaValue" : false,
+      "jianyiValue" : false
+    }
+  ]
+}
