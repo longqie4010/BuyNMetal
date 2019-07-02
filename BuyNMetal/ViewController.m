@@ -27,8 +27,8 @@
 @property (nonatomic,assign) CGFloat saleProductMoney;
 
 @property(nonatomic,strong) NSArray *discountCardArray;
-@property(nonatomic,strong) NSString *integral;
-@property(nonatomic,strong) NSString *cardLevel;
+@property(nonatomic,strong) NSString *cardNumber;
+@property(nonatomic,strong) NSDictionary *userDetailInfo;
 @end
 
 @implementation ViewController
@@ -36,6 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _allTotalProductMoney = 0;
+    [self getUserList];
     [self getProductInfo];
     [self getBuyInfo];
     [self totalPrefentCount];
@@ -57,26 +58,46 @@
             }
         }
     }
-    NSLog(@"_allTotalProductMoney~~~~%.2f",_allTotalProductMoney);
+//    NSLog(@"_allTotalProductMoney~~~~%.2f",_allTotalProductMoney);
     [self getUserIntegral];
 }
 
 -(void)getUserIntegral
 {
+    BOOL yesOrNo = NO;
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:_cardNumber] == nil || [[[NSUserDefaults standardUserDefaults] objectForKey:_cardNumber] isEqualToString:@""]) {
+        yesOrNo = YES;
+    }
     for (NSDictionary *userDic in _userListArray) {
-        if ([[userDic objectForKey:@"cardLevel"] isEqualToString:_cardLevel]) {
-            [self getUserLevel:_cardLevel];
+        if (!yesOrNo) {
+            if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"cardNumber"] isEqualToString:[userDic objectForKey:@"cardNumber"]]) {
+                [self getUserLevel:[[[NSUserDefaults standardUserDefaults] objectForKey:@"totalIntegral"] integerValue]];
+            }
+        }else
+        {
+            if ([[userDic objectForKey:@"cardNumber"] isEqualToString:_cardNumber]) {
+                _userDetailInfo = userDic;
+                [self getUserLevel:[[userDic objectForKey:@"jinfen"] integerValue]];
+                break;
+            }
         }
     }
 }
 
--(void)getUserLevel:(NSString *)cardName
+-(void)getUserLevel:(NSInteger)integral
 {
     NSInteger times = 1;
-    if ([cardName isEqualToString:@"普卡"])
-    {
-        
+    if (integral <=50000 && integral >10000){
+        times = 1.5;
+    }else if(integral <= 100000 && integral >50000){
+        times = 1.8;
+    }else if(integral >100000){
+        times = 2;
     }
+    NSInteger totalIntegral =  integral + _allTotalProductMoney * times;
+    [[NSUserDefaults standardUserDefaults] setValue:[_userDetailInfo objectForKey:@"cardNumber"] forKey:[NSString stringWithFormat:@"%@",[_userDetailInfo objectForKey:@"cardNumber"]]];
+    [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%ld",totalIntegral] forKey:[NSString stringWithFormat:@"%@",[_userDetailInfo objectForKey:@"totalIntegral"]]];
+    NSLog(@"totalIntegral~~~~~%ld~%ld",(long)times,[[[NSUserDefaults standardUserDefaults] objectForKey:@"totalIntegral"] integerValue]);
 }
 
 -(void)findMaxYouhui:(NSInteger)totalPrice
@@ -89,7 +110,7 @@
     NSString *last = [NSString stringWithFormat:@"%.2f",lastDelate];
     _saleProductMoney = totalPrice - [last floatValue];
     
-    NSLog(@"_saleProductMoney~~~~%.2f",_saleProductMoney);
+//    NSLog(@"_saleProductMoney~~~~%.2f",_saleProductMoney);
     _allTotalProductMoney = _allTotalProductMoney + _saleProductMoney;
 }
 
@@ -196,8 +217,8 @@
     if ([[_buyInfoDictionary objectForKey:@"discountCards"] count]>0) {
         _discountCardArray = [_buyInfoDictionary objectForKey:@"discountCards"];
     }
-    _cardLevel = [_buyInfoDictionary objectForKey:@"cardLevel"];
-    NSLog(@"_buyInfoDictionary~~%@",_buyInfoDictionary);
+    _cardNumber = [_buyInfoDictionary objectForKey:@"cardNumber"];
+//    NSLog(@"_buyInfoDictionary~~%@",_buyInfoDictionary);
 
 }
 
@@ -207,7 +228,7 @@
     NSData * jsonData = [[NSData alloc]initWithContentsOfFile:jsonPath];
     _productInfoDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
     _productInfoArray = [_productInfoDictionary objectForKey:@"items"];
-    NSLog(@"_productInfoArray~~%@",_productInfoArray);
+//    NSLog(@"_productInfoArray~~%@",_productInfoArray);
 
 }
 
@@ -217,7 +238,7 @@
     NSData * jsonData = [[NSData alloc]initWithContentsOfFile:jsonPath];
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
     _userListArray = [jsonDictionary objectForKey:@"items"];
-    NSLog(@"_userListArray~~%@",_userListArray);
+//    NSLog(@"_userListArray~~%@",_userListArray);
     
 }
 - (void)didReceiveMemoryWarning {

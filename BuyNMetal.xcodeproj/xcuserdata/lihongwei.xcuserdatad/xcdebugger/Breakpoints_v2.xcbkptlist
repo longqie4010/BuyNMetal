@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuyNMetal/ViewController.m"
-            timestampString = "583765046.045235"
+            timestampString = "583768074.088168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-getZhekouDelagte:discountCards:info:"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-getUserIntegral"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuyNMetal/ViewController.m"
-            timestampString = "583765046.045235"
+            timestampString = "583768074.088168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-findMaxYouhui:"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-getUserLevel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuyNMetal/ViewController.m"
-            timestampString = "583765046.045235"
+            timestampString = "583768093.166303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "-getBuyInfo"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-getUserIntegral"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

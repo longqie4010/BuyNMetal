@@ -5,7 +5,7 @@
   ],
   "items" : [
     {
-      "amount" : 0,
+      "amount" : 10,
       "product" : "001001"
     },
     {
@@ -25,7 +25,7 @@
       "product" : "002003"
     },
     {
-      "amount" : 1,
+      "amount" : 0,
       "product" : "003001"
     },
     {
@@ -41,5 +41,5 @@
       "type" : "余额支付"
     }
   ],
-  "cardLevel" : "普卡"
+  "cardNumber" : "6236609999"
 }
