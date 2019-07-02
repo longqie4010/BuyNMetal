@@ -1,4 +1,5 @@
 {
+  "cardNumber" : "6236609999",
   "createTime" : "2019-07-02 15:00:00",
   "discountCards" : [
     "9折券"
@@ -6,31 +7,63 @@
   "items" : [
     {
       "amount" : 10,
-      "product" : "001001"
+      "price" : "998.00",
+      "product" : "001001",
+      "productName" : "世园会五十国钱币册"
     },
     {
       "amount" : 0,
-      "product" : "001002"
+      "price" : "1380.00",
+      "product" : "001002",
+      "productName" : "2019北京世园会纪念银章大全40g"
     },
     {
       "amount" : 0,
-      "product" : "002001"
+      "price" : "",
+      "product" : "002001",
+      "productName" : ""
     },
     {
       "amount" : 0,
-      "product" : "002002"
+      "price" : "",
+      "product" : "002002",
+      "productName" : ""
     },
     {
       "amount" : 0,
-      "product" : "002003"
+      "price" : "",
+      "product" : "002003",
+      "productName" : ""
     },
     {
       "amount" : 0,
-      "product" : "003001"
+      "price" : "1580.00",
+      "product" : "003001",
+      "productName" : "招财进宝"
     },
     {
       "amount" : 0,
-      "product" : "003002"
+      "price" : "980.00",
+      "product" : "003002",
+      "productName" : "水晶之恋"
+    },
+    {
+      "amount" : 0,
+      "price" : "998.00",
+      "product" : "002002",
+      "productName" : "中国经典钱币套装"
+    },
+    {
+      "amount" : 0,
+      "price" : "1080.00",
+      "product" : "002001",
+      "productName" : "守扩之羽比翼双飞4.8g"
+    },
+    {
+      "amount" : 0,
+      "price" : "698.00",
+      "product" : "002003",
+      "productName" : "中国银象棋12g"
     }
   ],
   "memberId" : "6236609999",
@@ -40,6 +73,5 @@
       "amount" : 9860,
       "type" : "余额支付"
     }
-  ],
-  "cardNumber" : "6236609999"
+  ]
 }

@@ -24,11 +24,16 @@
 @property (nonatomic,assign) NSInteger discountMoney;
 
 @property (nonatomic,assign) CGFloat allTotalProductMoney;
+@property (nonatomic,assign) CGFloat oldAllTotalProductMoney;
 @property (nonatomic,assign) CGFloat saleProductMoney;
 
 @property(nonatomic,strong) NSArray *discountCardArray;
 @property(nonatomic,strong) NSString *cardNumber;
 @property(nonatomic,strong) NSDictionary *userDetailInfo;
+@property (nonatomic,strong) NSMutableArray *delegateInfoMarray;
+@property (nonatomic,strong) NSMutableArray *delegateMoneyMarray;
+@property(nonatomic,strong) NSString *oldLevel;
+
 @end
 
 @implementation ViewController
@@ -36,6 +41,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _allTotalProductMoney = 0;
+    _oldAllTotalProductMoney = 0;
+    _delegateInfoMarray = [[NSMutableArray alloc]init];
+    _delegateMoneyMarray = [[NSMutableArray alloc]init];
     [self getUserList];
     [self getProductInfo];
     [self getBuyInfo];
@@ -53,7 +61,7 @@
                     [self getFullDelagte:totalPrice info:productDic];
                     [self getYouhuiDelagte:[[buyDic objectForKey:@"amount"] integerValue] price:[[productDic objectForKey:@"price"] integerValue] info:productDic];
                     [self getZhekouDelagte:totalPrice discountCards:_discountCardArray info:productDic];
-                    [self findMaxYouhui:totalPrice];
+                    [self findMaxYouhui:totalPrice buyInfo:buyDic];
                 }
             }
         }
@@ -65,18 +73,22 @@
 -(void)getUserIntegral
 {
     BOOL yesOrNo = NO;
+    [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:[NSString stringWithFormat:@"%@",_cardNumber]];
     if ([[NSUserDefaults standardUserDefaults] objectForKey:_cardNumber] == nil || [[[NSUserDefaults standardUserDefaults] objectForKey:_cardNumber] isEqualToString:@""]) {
         yesOrNo = YES;
     }
     for (NSDictionary *userDic in _userListArray) {
         if (!yesOrNo) {
             if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"cardNumber"] isEqualToString:[userDic objectForKey:@"cardNumber"]]) {
+                _userDetailInfo = userDic;
+                _oldLevel = [_userDetailInfo objectForKey:@"cardLevel"];
                 [self getUserLevel:[[[NSUserDefaults standardUserDefaults] objectForKey:@"totalIntegral"] integerValue]];
             }
         }else
         {
             if ([[userDic objectForKey:@"cardNumber"] isEqualToString:_cardNumber]) {
                 _userDetailInfo = userDic;
+                _oldLevel = [_userDetailInfo objectForKey:@"cardLevel"];
                 [self getUserLevel:[[userDic objectForKey:@"jinfen"] integerValue]];
                 break;
             }
@@ -96,11 +108,49 @@
     }
     NSInteger totalIntegral =  integral + _allTotalProductMoney * times;
     [[NSUserDefaults standardUserDefaults] setValue:[_userDetailInfo objectForKey:@"cardNumber"] forKey:[NSString stringWithFormat:@"%@",[_userDetailInfo objectForKey:@"cardNumber"]]];
-    [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%ld",totalIntegral] forKey:[NSString stringWithFormat:@"%@",[_userDetailInfo objectForKey:@"totalIntegral"]]];
-    NSLog(@"totalIntegral~~~~~%ld~%ld",(long)times,[[[NSUserDefaults standardUserDefaults] objectForKey:@"totalIntegral"] integerValue]);
+    [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%ld",totalIntegral] forKey:@"totalIntegral"];
+//    NSLog(@"totalIntegral~~~~~%ld~%ld\n",(long)times,[[[NSUserDefaults standardUserDefaults] objectForKey:@"totalIntegral"] integerValue]);
+    NSLog(@"%@\n",@"方鼎银行贵金属购买凭证");
+    NSLog(@"销售单号：%@   日期：%@\n",[_buyInfoDictionary objectForKey:@"orderId"],[_buyInfoDictionary objectForKey:@"createTime"]);
+    NSLog(@"客户卡号：%@   姓名：%@    客户等级：%@    积分：%@\n",[_userDetailInfo objectForKey:@"cardNumber"],[_userDetailInfo objectForKey:@"name"],[_userDetailInfo objectForKey:@"cardLevel"],[[NSUserDefaults standardUserDefaults] objectForKey:@"totalIntegral"]);
+    NSLog(@"%@    %@    %@",@"商品及数量",@"单价",@"金额\n");
+    for (NSDictionary *proInfo  in _buyInfoArray) {
+        NSLog(@"(%@)%@%ld,%ld,%ld",[proInfo objectForKey:@"product"],[proInfo objectForKey:@"productName"],[[proInfo objectForKey:@"amount"] integerValue],[[proInfo objectForKey:@"price"] integerValue],[[proInfo objectForKey:@"amount"] integerValue]*[[proInfo objectForKey:@"product"] integerValue]);
+    }
+    NSLog(@"合计%.2f\n",_oldAllTotalProductMoney);
+    NSLog(@"优惠清单\n");
+    for (int i= 0; i<_delegateInfoMarray.count; i++) {
+        NSLog(@"%@%@:%@",[_delegateInfoMarray[i] objectForKey:@"product"],[_delegateInfoMarray[i] objectForKey:@"productName"],[NSString stringWithFormat:@"%@",_delegateMoneyMarray[i]]);
+    }
+    NSLog(@"优惠合计:%.2f\n",_oldAllTotalProductMoney - _allTotalProductMoney);
+    NSLog(@"应收合计:%.2f\n",_allTotalProductMoney);
+    for (NSString *string in _discountCardArray) {
+        NSLog(@"优惠券%@",string);
+    }
+    NSInteger integralk = [[[NSUserDefaults standardUserDefaults] objectForKey:@"totalIntegral"] integerValue];
+    NSString *newLevel = @"";
+    if(integralk <10000)
+    {
+        newLevel = @"普卡";
+        NSLog(@"%@",@"普卡");
+    }else if (integralk <=50000 && integralk >10000){
+        newLevel = @"金卡";
+        NSLog(@"%@",@"金卡");
+    }else if(integralk <= 100000 && integralk >50000){
+        newLevel = @"白金卡";
+        NSLog(@"%@",@"白金卡");
+    }else if(integralk >100000){
+        newLevel = @"钻石卡";
+        NSLog(@"%@",@"钻石卡");
+    }
+    if ([_oldLevel isEqualToString:newLevel]) {
+        NSLog(@"%@",@"恭喜你升级");
+    }
+
+
 }
 
--(void)findMaxYouhui:(NSInteger)totalPrice
+-(void)findMaxYouhui:(NSInteger)totalPrice buyInfo:(NSDictionary *)buyInfo
 {
     NSNumber *san = [NSNumber numberWithFloat:_zhekouMoney];
     NSNumber *er = [NSNumber numberWithFloat:_youhuiMoney];
@@ -109,7 +159,9 @@
     CGFloat lastDelate = [self findMax:array];
     NSString *last = [NSString stringWithFormat:@"%.2f",lastDelate];
     _saleProductMoney = totalPrice - [last floatValue];
-    
+    [_delegateInfoMarray addObject:buyInfo];
+    [_delegateMoneyMarray addObject:last];
+    _oldAllTotalProductMoney = _oldAllTotalProductMoney + totalPrice;
 //    NSLog(@"_saleProductMoney~~~~%.2f",_saleProductMoney);
     _allTotalProductMoney = _allTotalProductMoney + _saleProductMoney;
 }
