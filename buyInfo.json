@@ -21,11 +21,11 @@
       "product" : "002002"
     },
     {
-      "amount" : 2,
+      "amount" : 0,
       "product" : "002003"
     },
     {
-      "amount" : 0,
+      "amount" : 1,
       "product" : "003001"
     },
     {
@@ -40,5 +40,6 @@
       "amount" : 9860,
       "type" : "余额支付"
     }
-  ]
+  ],
+  "cardLevel" : "普卡"
 }

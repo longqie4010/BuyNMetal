@@ -17,6 +17,7 @@
 		600C0C6222CB436C00E04481 /* BuyNMetalUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 600C0C6122CB436C00E04481 /* BuyNMetalUITests.m */; };
 		602F214822CB52B600BEF569 /* buyInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 602F214622CB52B600BEF569 /* buyInfo.json */; };
 		602F214922CB52B600BEF569 /* product.json in Resources */ = {isa = PBXBuildFile; fileRef = 602F214722CB52B600BEF569 /* product.json */; };
+		602F214B22CB896000BEF569 /* userInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 602F214A22CB896000BEF569 /* userInfo.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		600C0C6322CB436C00E04481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		602F214622CB52B600BEF569 /* buyInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = buyInfo.json; sourceTree = "<group>"; };
 		602F214722CB52B600BEF569 /* product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = product.json; sourceTree = "<group>"; };
+		602F214A22CB896000BEF569 /* userInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = userInfo.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				602F214622CB52B600BEF569 /* buyInfo.json */,
+				602F214A22CB896000BEF569 /* userInfo.json */,
 				602F214722CB52B600BEF569 /* product.json */,
 				600C0C3B22CB436C00E04481 /* BuyNMetal */,
 				600C0C5522CB436C00E04481 /* BuyNMetalTests */,
@@ -252,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				602F214B22CB896000BEF569 /* userInfo.json in Resources */,
 				602F214822CB52B600BEF569 /* buyInfo.json in Resources */,
 				600C0C4C22CB436C00E04481 /* LaunchScreen.storyboard in Resources */,
 				600C0C4922CB436C00E04481 /* Assets.xcassets in Resources */,

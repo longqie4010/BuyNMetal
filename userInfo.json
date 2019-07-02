@@ -1,0 +1,28 @@
+{
+  "items" : [
+    {
+      "cardLevel" : "普卡",
+      "cardNumber" : "6236609999",
+      "jinfen" : 9860,
+      "name" : "马丁"
+    },
+    {
+      "cardLevel" : "金卡",
+      "cardNumber" : "6630009999",
+      "jinfen" : 48860,
+      "name" : "王立"
+    },
+    {
+      "cardLevel" : "白金卡",
+      "cardNumber" : "8230009999",
+      "jinfen" : 98860,
+      "name" : "李想"
+    },
+    {
+      "cardLevel" : "钻石卡",
+      "cardNumber" : "9230009999",
+      "jinfen" : 198860,
+      "name" : "张三"
+    }
+  ]
+}
